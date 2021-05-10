@@ -1,30 +1,33 @@
 #include "Vehicle.h"
 Vehicle::Vehicle(const char* registration, const char* description, std::size_t space) :
-	regisrationNum(registration), description(description) , size(space)
-{}
+	registration(nullptr), description(nullptr), size(space)
+{
+	if (!space) throw std::invalid_argument("wrong size");
+	this->registration = String(registration);//move assignment operator called
+	this->description = String(description);//move assignment operator called
+}
 
-Vehicle::Vehicle(const Vehicle& other):
-	regisrationNum(other.regisrationNum), description(other.description), size(other.size){}
+Vehicle::Vehicle(const Vehicle& other) :
+	registration(other.registration), description(other.description), size(other.size) {}
 
 Vehicle& Vehicle::operator=(const Vehicle& other)
 {
-	if(this!=&other)
+	if (this != &other)
 	{
-		this->regisrationNum = other.regisrationNum;
+		this->registration = other.registration;
 		this->description = other.description;
 		this->size = other.size;
 	}
 	return *this;
 }
+Vehicle::~Vehicle() {}
 
-Vehicle::~Vehicle(){}
-
-const MyString& Vehicle::registration() const
+const String& Vehicle::getRegistration() const
 {
-	return this->regisrationNum;
+	return this->registration;
 }
 
-const MyString& Vehicle::getDescription() const
+String Vehicle::getDescription() const
 {
 	return this->description;
 }
@@ -32,4 +35,10 @@ const MyString& Vehicle::getDescription() const
 size_t Vehicle::getSize()const
 {
 	return this->size;
+}
+
+bool Vehicle::operator==(const Vehicle& other)const
+{
+	return (this->description == other.description) && (this->size == other.size)
+		&& (this->registration == other.registration);
 }
