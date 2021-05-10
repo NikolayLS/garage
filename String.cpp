@@ -52,7 +52,6 @@ void String::expand()
 
 String::String(const String& other) : size(0), capacity(0), str(nullptr)
 {
-	std::cout << "cpy called" << std::endl;
 	if (other.size > 0)
 	{
 		this->str = new char[other.capacity];
@@ -66,7 +65,6 @@ String::String(const String& other) : size(0), capacity(0), str(nullptr)
 
 String::String(String&& other)noexcept :size(0), capacity(0), str(other.str)
 {
-	std::cout << "move called" << std::endl;
 	other.capacity = 0;
 	other.size = 0;
 	other.str = nullptr;
