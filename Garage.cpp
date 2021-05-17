@@ -69,6 +69,7 @@ Garage& Garage::operator=(Garage&& other)noexcept
 {
 	if (this != &other)
 	{
+		this->freeMemory();
 		this->carCount = other.carCount;
 		this->freeSpaces = other.freeSpaces;
 		this->maxSpace = other.maxSpace;
