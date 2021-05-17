@@ -52,6 +52,7 @@ void String::expand()
 
 String::String(const String& other) : size(0), capacity(0), str(nullptr)
 {
+	std::cout << "cpy called" << std::endl;
 	if (other.size > 0)
 	{
 		this->str = new char[other.capacity];
@@ -65,6 +66,7 @@ String::String(const String& other) : size(0), capacity(0), str(nullptr)
 
 String::String(String&& other)noexcept :size(0), capacity(0), str(other.str)
 {
+	std::cout << "move called" << std::endl;
 	other.capacity = 0;
 	other.size = 0;
 	other.str = nullptr;
@@ -204,7 +206,7 @@ std::istream& operator>>(std::istream& is, String& thisString)
 		while (ch != EOF && !isspace(static_cast<unsigned char>(ch)))
 		{   //this is check for setw(int) function for input streams
 			if (thisString.size >= is.width() && is.width()) break;
-
+			//string exception guarantee LIKE THIS OPERATOR WORKS FOR "int"
 			thisString.push_back(is.get());
 			ch = is.peek();
 		}

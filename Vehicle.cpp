@@ -1,10 +1,8 @@
 #include "Vehicle.h"
 Vehicle::Vehicle(const char* registration, const char* description, std::size_t space) :
-	registration(nullptr), description(nullptr), size(space)
+	registration(registration), description(description), size(space)
 {
 	if (!space) throw std::invalid_argument("wrong size");
-	this->registration = String(registration);//move assignment operator called
-	this->description = String(description);//move assignment operator called
 }
 
 Vehicle::Vehicle(const Vehicle& other) :

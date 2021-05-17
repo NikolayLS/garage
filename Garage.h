@@ -19,8 +19,8 @@ public:
 	void insert(const Vehicle& v);
 	void erase(const String&);
 	size_t carNum()const;
-	const Vehicle& operator[](std::size_t pos) const;
-	const Vehicle& at(std::size_t pos) const;
+	const Vehicle& operator[](const size_t& pos) const;
+	const Vehicle& at(const size_t& pos) const;
 	bool empty() const;
 	void clear();
 	const Vehicle* find(const char* registration) const;

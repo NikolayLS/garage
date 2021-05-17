@@ -122,13 +122,13 @@ size_t Garage::carNum()const
 	return this->carCount;
 }
 
-const Vehicle& Garage::operator[](std::size_t pos) const
+const Vehicle& Garage::operator[](const size_t& pos) const
 {
 	//assume that operator[] will be called with correct parameter
 	return *(this->vehicleArray[pos]);
 }
 
-const Vehicle& Garage::at(std::size_t pos) const
+const Vehicle& Garage::at(const size_t& pos) const
 {
 	if (pos >= this->carCount) throw std::out_of_range("no car at this position");
 	return *(this->vehicleArray[pos]);
