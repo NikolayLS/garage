@@ -64,7 +64,7 @@ String::String(const String& other) : size(0), capacity(0), str(nullptr)
 	}
 }
 
-String::String(String&& other)noexcept :size(0), capacity(0), str(other.str)
+String::String(String&& other)noexcept :size(other.size), capacity(other.capacity), str(other.str)
 {
 	std::cout << "move called" << std::endl;
 	other.capacity = 0;
